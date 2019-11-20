@@ -6,7 +6,6 @@ const Drone = require('./drone')
 const Location = require('./location')
 const Schedule = require('./schedule')
 const Team = require('./team')
-const Role = require('./role')
 
 
 /*
@@ -17,4 +16,5 @@ Team.hasOne(Schedule)
 
 Schedule.hasMany(Location)
 
-User.hasMany(Role)
+// User.belongsToMany(Role, {through: 'UserRole'})
+// Role.belongsToMany(User, {through: 'UserRole'})

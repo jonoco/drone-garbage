@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "debug": "./bin/debug",
-    "destroy": "node ./bin/drop"
+    "destroy": "node ./bin/drop",
+    "seed": "node ./bin/seed"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

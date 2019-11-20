@@ -15,6 +15,11 @@ User.init({
     type: Sequelize.STRING,
     allowNull: false,
     unique: true
+  },
+  role: {
+    type: Sequelize.ENUM('user', 'supervisor'),
+    allowNull: false,
+    defaultValue: 'user'
   }
 }, { 
   sequelize,
