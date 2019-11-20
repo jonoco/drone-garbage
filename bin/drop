@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+require('dotenv').config()
+const sequelize = require('../models')
+require('../models/associations')
+
+// Clear and rebuild database
+sequelize.sync({ 
+  force: true 
+}).then( () => {
+  process.exit(0)
+}) 
