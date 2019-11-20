@@ -1,13 +1,13 @@
-const { Sequelize, Model } = require('Sequelize')
+const { Model, DataTypes } = require('sequelize')
 const sequelize = require('./index')
 
 module.exports = sequelize.define('drone', {
   status: {
-    type: Sequelize.ENUM('ok', 'error', 'warning'),
+    type: DataTypes.ENUM('ok', 'error', 'warning'),
     allowNull: false
   },
   battery: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     allowNull: true,
     validate: {
       max: 100,
