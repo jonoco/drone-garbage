@@ -1,41 +1,41 @@
-const { Sequelize, Model } = require('sequelize')
+const { DataTypes } = require('sequelize')
 const sequelize = require('./index')
 
 module.exports = sequelize.define('location', {
   description: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
     allowNull: true,
     defaultValue: 'No description.'
   },
   long: {
-    type: Sequelize.DOUBLE,
+    type: DataTypes.DOUBLE,
     allowNull: false
   },
   lat: {
-    type: Sequelize.DOUBLE,
+    type: DataTypes.DOUBLE,
     allowNull: false
   },
   priority: {
-    type: Sequelize.ENUM('low', 'medium', 'high'),
+    type: DataTypes.ENUM('low', 'medium', 'high'),
     allowNull: false
   },
   complete: {
-    type: Sequelize.BOOLEAN,
+    type: DataTypes.BOOLEAN,
     allowNull: false,
     defaultValue: false
   },
   surveyComplete: {
-    type: Sequelize.BOOLEAN,
+    type: DataTypes.BOOLEAN,
     allowNull: false,
     defaultValue: false
   },
   itemsSurveyed: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     allowNull: false,
     defaultValue: 0
   },
   itemsCollected: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     allowNull: false,
     defaultValue: 0
   }
