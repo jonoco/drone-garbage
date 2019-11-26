@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    <form action="/login" method="post">
+        <div class="imgcontainer">
+            <img src="https://cdn1.iconfinder.com/data/icons/appliance-1/100/Drone-07-512.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" required>
+
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+                
+            <button type="submit">Login</button>
+            if error
+                span= error.username
+                span= error.password
+                span= error.nouser
+        </div>
+    </form>
