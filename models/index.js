@@ -7,7 +7,8 @@ const sequelize = new Sequelize(DATABASE_URI, {
   dialect: 'postgres',
   dialectOptions: {
     ssl: true
-  }
+  },
+  logging: process.env.SILENT ? () => {} : console.log
 });
 
 module.exports = sequelize

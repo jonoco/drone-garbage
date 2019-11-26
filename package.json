@@ -7,7 +7,7 @@
     "debug": "./bin/debug",
     "destroy": "node ./bin/drop",
     "seed": "node ./bin/seed",
-    "test": "./node_modules/mocha/bin/mocha"
+    "test": "SILENT=true ./node_modules/mocha/bin/mocha"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

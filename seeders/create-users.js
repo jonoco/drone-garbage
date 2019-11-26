@@ -4,13 +4,22 @@ const users = [
   { 
     firstName: 'Brock',
     lastName: 'Samson',
-    userName: 'FrankenMullet',
+    username: 'FrankenMullet',
+    password: 'pass'
     role: 'user' 
   },
   { 
     firstName: 'Sergeant',
     lastName: 'Hatred',
-    userName: 'UncleHatred',
+    username: 'UncleHatred',
+    password: 'pass'
+    role: 'user' 
+  },
+  { 
+    firstName: 'test',
+    lastName: 'test',
+    username: 'test',
+    password: 'test'
     role: 'user' 
   }
 ]
