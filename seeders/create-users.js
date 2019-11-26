@@ -5,21 +5,21 @@ const users = [
     firstName: 'Brock',
     lastName: 'Samson',
     username: 'FrankenMullet',
-    password: 'pass'
+    password: 'pass',
     role: 'user' 
   },
   { 
     firstName: 'Sergeant',
     lastName: 'Hatred',
     username: 'UncleHatred',
-    password: 'pass'
+    password: 'pass',
     role: 'user' 
   },
   { 
     firstName: 'test',
     lastName: 'test',
     username: 'test',
-    password: 'test'
+    password: 'test',
     role: 'user' 
   }
 ]
