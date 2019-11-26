@@ -23,5 +23,15 @@ module.exports = sequelize.define('user', {
     type: DataTypes.ENUM('user', 'supervisor'),
     allowNull: false,
     defaultValue: 'user'
+  },
+  bio: {
+      type: DataTypes.TEXT,
+      allowNull:true,
+      defaultValue: 'Enter bio info here'
+  },
+  city: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 'Corvallis'
   }
 })

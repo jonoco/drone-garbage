@@ -3,7 +3,20 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  div
-    a(href='/users') users
-  div
-    <a href='/users'>users</a>
+  <div class="imgcontainer">
+    <img src="..photos/EmptyProfile.png">
+  </div>
+  
+  <br>
+
+  <div class="Bio">
+    <p id="userName"></p>
+    <p>Placeholder text for the users bio</p>
+    <button type="submit">Edit Bio</button>
+  </div>
+
+  <script>
+    let nameVar = document.querySelector("#userName");
+    nameVar.innerHTML = "John Harmie";
+  </script>
+
