@@ -6,10 +6,7 @@ block content
   if user
     p Hello #{user}
   div
-    a(href='/users') users
-  div
-    <a href='/users'>users</a>
-  div
+  if user
     a(href='/profile') profile
   div
     a(href='/login') login

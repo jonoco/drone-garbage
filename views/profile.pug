@@ -5,19 +5,21 @@ block content
   p Welcome to #{title}
   <div class="imgcontainer">
     <img src="/photos/EmptyProfile.png">
+    <form action="/profile" method="post">
+    <p>Change Profile Picture</p>
+        <input type="file" name="picUpload" value="picUpload" id="picUpload">
+        <input type="submit" value="submitPhoto" name="btn">
+    </form>
   </div>
   
   <br>
 
-<!-- Use a form to fill in info and edit -->
   <div class="Bio">
-    <p id="userName">#{user.firstName}</p>
-    <p>Placeholder text for the users bio</p>
-    <button type="submit">Edit Bio</button>
+    if user
+    <p>Name: #{user.firstName} #{user.lastName}</p>
+    <p>Bio:</p>
+    <form action="/profile" method="post">
+    <textarea name="userBio">#{user.bio}</textarea>
+    <input type="submit" value="submitBio" name="btn">
+    </form>
   </div>
-
-  <script>
-    let nameVar = document.querySelector("#userName");
-    nameVar.innerHTML = "John Harmie";
-  </script>
-
