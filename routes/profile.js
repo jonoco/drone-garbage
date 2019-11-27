@@ -2,17 +2,25 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user')
 
-/* GET Profile Page. */
-router.get('/', function(req, res, next) 
-{
-  res.render('profile', { title: 'Profile Page' });
+router.get('/:user', function(req, res, next) {
+    const username = req.params.user
+    
+    User.findOne({ where: { username: username }})
+        .then(function(user) {
+            if (!user) {
+                res.status(404)
+                res.redirect('/')
+            } else {
+                res.render('profile', {
+                    user: user
+                })
+            }
+            
+        }).catch(function(error) {
+            res.send(error)
+        })
+})
 
-//  var json;
 
-//   User.findAll().then(users => 
-//   {
-//     json = res.json(JSON.stringify(users, null, 4));
-//   })
-});
 
 module.exports = router;

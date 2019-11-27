@@ -4,13 +4,14 @@ block content
   h1= title
   p Welcome to #{title}
   <div class="imgcontainer">
-    <img src="..photos/EmptyProfile.png">
+    <img src="/photos/EmptyProfile.png">
   </div>
   
   <br>
 
+<!-- Use a form to fill in info and edit -->
   <div class="Bio">
-    <p id="userName"></p>
+    <p id="userName">#{user.firstName}</p>
     <p>Placeholder text for the users bio</p>
     <button type="submit">Edit Bio</button>
   </div>
