@@ -9,6 +9,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const usersProfile = require('./routes/profile');
 const loginRouter = require('./routes/login')
+const signupRouter = require('./routes/signup')
 
 const sequelize = require('./models')
 require('./models/associations')
@@ -29,17 +30,12 @@ app.use(cookieParser());
 app.use(session({ secret: 'secret key' }))
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Expose session to requests
-app.use(function(req, res, next) {
-    res.locals.user = req.session.user
-    next()
-})
-
 // Assign routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/profile', usersProfile);
-app.use('/login', loginRouter)
+app.use('/login', loginRouter);
+app.use('/signup',signupRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
