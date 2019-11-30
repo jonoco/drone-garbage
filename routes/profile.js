@@ -2,79 +2,60 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user')
 
-router.get('/:user', function(req, res, next) 
-{
-    const username = req.params.user
-    
-    User.findOne({ where: { username: username }}).then(function(user) 
-    {
-        if (!user) 
-        {
-            res.status(404)
-            res.redirect('/')
-        } 
-        else 
-        {
-            res.render('profile', { title: 'Drone Garbage', user: user })
-        }
-            
-        }).catch(function(error) 
-        {
-            res.send(error)
-        })
-})
 
 router.get('/', function(req, res, next) 
 {
-    let user
     if (req.session.user) 
     {
-        user = req.session.user
+        User.findOne({ where: { username: req.session.user.username }})
+            .then(function(user) {
+                if (!user) {
+                    res.status(404)
+                    res.send('No user found')
+                    return
+                }
+                
+                req.session.user = user
+                res.render('profile', { title: 'Profile', form: `/profile/${user.username}`, user: user})
+            })
+    } 
+    else
+    {
+        res.redirect('/')
     }
-
-    res.render('profile', { title: 'Drone Garbage', user });
 })
 
-router.post('/', function(req, res, next) 
+router.post('/:user', function(req, res, next) 
 {
-    let curUser
-    if (req.session.user) 
+    const username = req.params.user
+    if (username) 
     {
-        curUser = req.session.user
-    
+        console.log('user logged in')
         if(req.body.btn == 'submitPhoto') 
         {
-            res.render('profile', { title: 'PHOTO UPDATED', curUser})
+            res.redirect('/profile')
         }
         else if(req.body.btn == 'submitBio')
         {
             //Update the users Bio to match what the user has typed into the userBio textbox
-            User.update({bio: req.body.userBio},{where: {username: curUser.username}}).then(function(tmp)
-            {
-                //.then returns once update is completed
-                req.session.user.bio = req.body.userBio
-                curUser.bio = req.body.userBio
-
-                //Update the sessions with the updated user
-                User.findOne({where: { username: curUser.username }}).then(function(user) 
-                {
-                    if (!user) 
-                    {
-                        res.status(400)
-                        res.render('login', 
-                        {
-                            error: { nouser: 'username not found' }
-                        })
-                    } 
-                    else 
-                    {
-                        req.session.user = user
-                        res.render('profile', { title: 'Drone Garbage', user})
-                    }
+            User.findOne({where: { username }})
+                .then(function(user) {
+                    user.bio = req.body.userBio
+                    user.save().then(function() {
+                        res.redirect('/profile')      
+                    }) 
                 })
-            })
+        }
+        else
+        {
+            res.status(404)
+            res.send('Bad request')
         }  
-    }  
+    } 
+    else {
+        res.status(404)
+        res.send('Bad request')
+    }
 })
 
 

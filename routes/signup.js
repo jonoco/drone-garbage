@@ -44,6 +44,7 @@ router.post('/', function(req, res, next) {
     req.session.user = user
     res.redirect('/')
   }).catch(function(error) { // USername already exsits
+    res.status(400)
     res.send('User failed to create. User already exists')
   })
 })

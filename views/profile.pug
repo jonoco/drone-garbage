@@ -1,25 +1,26 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  <div class="imgcontainer">
-    <img src="/photos/EmptyProfile.png">
-    <form action="/profile" method="post">
-    <p>Change Profile Picture</p>
-        <input type="file" name="picUpload" value="picUpload" id="picUpload">
-        <input type="submit" value="submitPhoto" name="btn">
-    </form>
-  </div>
-  
-  <br>
+  div.profile
+    h1= title
+    p Welcome to #{title}
+    <div class="imgcontainer">
+        <img src="/photos/EmptyProfile.png">
+        <form action=#{form} method="post">
+        <p>Change Profile Picture</p>
+            <input type="file" name="picUpload" value="picUpload" id="picUpload">
+            <input type="submit" value="submitPhoto" name="btn">
+        </form>
+    </div>
+    
+    <br>
 
-  <div class="Bio">
-    if user
-    <p>Name: #{user.firstName} #{user.lastName}</p>
-    <p>Bio:</p>
-    <form action="/profile" method="post">
-    <textarea name="userBio">#{user.bio}</textarea>
-    <input type="submit" value="submitBio" name="btn">
-    </form>
-  </div>
+    <div class="Bio">
+        if user
+        <p>Name: #{user.firstName} #{user.lastName}</p>
+        <p>Bio:</p>
+        <form action=#{form} method="post">
+            <textarea name="userBio">#{user.bio}</textarea>
+            <input type="submit" value="submitBio" name="btn">
+        </form>
+    </div>
