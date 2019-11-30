@@ -3,7 +3,7 @@ extends layout
 block content
     <form action="/signup" method="post" style="border:2px solid #ccc">
         <div class="container">
-            <h1>Garbage Drone Sign Up</h1>
+            <h1>Sign Up</h1>
             <p>Please enter the following information to create an account.</p>
             <hr>
             <label for="username"><b>Username</b></label>
@@ -17,13 +17,6 @@ block content
             <label for="passrepeat"><b>Repeat Password</b></label>
             <input type="password" placeholder="Repeat Password" name="passrepeat" required>
             <br>
-            <br>
-            <label>
-            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-            </label>
-            <p>By creating an account you agree to our <a href="https://www.fbi.gov/" 		style="color:dodgerblue">Terms & Privacy</a>.</p>
-            <div class="clearfix">
-            <button type="button" class="cancelbutton">Cancel</button>
             <button type="submit" class="signupbutton">Sign Up</button>
             </div>
         </div>
