@@ -1,0 +1,22 @@
+.sidemenu {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  left: 0;
+  margin-right: 20px;
+  width: 200px;
+  height: 100%;
+
+  color: #eee;
+  background-color: #333;
+}
+
+.sidemenu a {
+  margin-bottom: 15px;
+  text-decoration: none;
+}
+
+.sidemenu a:hover{
+  color: #eee;
+}

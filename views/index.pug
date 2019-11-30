@@ -4,12 +4,4 @@ block content
   h1= title
   p Welcome to #{title}
   if user
-    p Hello #{user}
-  div
-  if user
-    a(href='/profile') profile
-  div
-    a(href='/login') login
-  div 
-    a(href='/signup') signup
-
+    p Hello #{user.firstName}

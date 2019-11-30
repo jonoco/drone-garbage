@@ -3,12 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    let name
-    if (req.session.user) {
-        name = req.session.user.username
-    }
-
-    res.render('index', { title: 'Drone Garbage', user: name });
+    res.render('index', { title: 'Drone Garbage' });
 });
 
 module.exports = router;

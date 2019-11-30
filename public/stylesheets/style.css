@@ -1,10 +1,19 @@
+/**
+ * Base
+ */
+@import 'base.css';
+
+/**
+ * Layouts
+ */
+@import 'layout.css';
+
+/**
+ * Components
+ */
+@import 'sidemenu.css';
+
+/**
+ * Pages
+ */
 @import 'signup.css';
-
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
