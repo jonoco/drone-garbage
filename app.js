@@ -30,6 +30,12 @@ app.use(cookieParser());
 app.use(session({ secret: 'secret key' }))
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Expose session to requests
+app.use(function(req, res, next) {
+    res.locals.user = req.session.user
+    next()
+})
+
 // Assign routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
