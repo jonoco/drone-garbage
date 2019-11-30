@@ -10,6 +10,7 @@ const usersRouter = require('./routes/users');
 const usersProfile = require('./routes/profile');
 const loginRouter = require('./routes/login')
 const signupRouter = require('./routes/signup')
+const logoutRouter = require('./routes/logout')
 
 const sequelize = require('./models')
 require('./models/associations')
@@ -42,6 +43,8 @@ app.use('/users', usersRouter);
 app.use('/profile', usersProfile);
 app.use('/login', loginRouter);
 app.use('/signup',signupRouter);
+app.use('/logout', logoutRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
