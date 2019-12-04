@@ -1,0 +1,38 @@
+.status {
+    padding: 5px;
+}
+
+.status table {
+    width: 100%;
+    border-spacing: 0;
+    text-align: center;
+}
+
+.status th {
+    height: 30px;
+}
+
+.status thead {
+    background-color: #ccc;
+}
+
+.status tr {
+    height: 30px;
+    transition: all 0.08s ease-in-out;
+}
+
+.status tr:hover {
+    background-color: #eee;
+}
+
+.status button {
+    border: none;
+    padding: 5px 15px;
+    margin-right: 5px;
+    background-color: #ddd;
+    transition: all 0.08s ease-in-out;   
+}
+
+.status button:hover {
+    background-color: #bbb;
+}

@@ -15,11 +15,12 @@ block content
             </thead>
             <tbody>
                 each row, i in teams
+                    - var time = row['timeRemaining']
                     tr
-                        td= row['id']
+                        td= i+1
                         td= row['status']
-                        td= row['completion']
-                        td= row['timeRemaining']
+                        td= row['completion']+'%'
+                        td= Math.floor(time/3600)+' Hours '+Math.floor((time%3600)/60)+' Minutes'
                         td= row['location']
                         td
                             button details

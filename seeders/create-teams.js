@@ -2,30 +2,27 @@ const Team = require('../models/team')
 
 const teams = [
   {
-    id: 1,
-    status: 0,
+    status: 'Off-Duty',
     completion: 0,
     timeRemaining: 0,
     location: 'Motorpool'
   },
   {
-    id: 2,
-    status: 1,
+    status: 'Active Cleanup',
     completion: 96,
     timeRemaining: 3600,
     location: 'I-95 Mile 37'
   },
   {
-    id: 3,
-    status: 3,
+    status: 'En-route to Disposal Site',
     completion: 12,
     timeRemaining: 2400,
     location: 'I-5 Mile 126'
   },
 ]
 
-module.exports = function() {
-  teams.forEach(team => {
-    Team.create(team)
+module.exports = async function() {
+  teams.forEach(async team => {
+    let newTeam = await Team.create(team)
   })
 }

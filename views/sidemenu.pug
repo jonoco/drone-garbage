@@ -1,10 +1,11 @@
 <div class="sidemenu">
     <h2>DGC</h2>
     <a href='/'>home</a>
-    a(href='/schedule') schedule
     if user
-        <a href='/profile'>profile</a>
-        <a href='/logout'>logout</a>
+        a(href='/profile') profile
+        a(href='/schedule') schedule
+        a(href='/fleetstatus') fleet status
+        a(href='/logout') logout
     else
         <a href='/login'>log in</a>
         <a href='/signup'>sign up</a>
