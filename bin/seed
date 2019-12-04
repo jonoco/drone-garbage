@@ -6,6 +6,7 @@ require('../models/associations')
 
 // Run seeds
 require('../seeders/create-users')()
+require('../seeders/create-locations')()
 
 // Clear and rebuild database
 sequelize.sync({ 

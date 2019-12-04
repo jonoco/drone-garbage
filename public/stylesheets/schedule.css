@@ -1,0 +1,38 @@
+.schedule {
+    padding: 5px;
+}
+
+.schedule table {
+    width: 100%;
+    border-spacing: 0;
+    text-align: center;
+}
+
+.schedule th {
+    height: 30px;
+}
+
+.schedule thead {
+    background-color: #ccc;
+}
+
+.schedule tr {
+    height: 30px;
+    transition: all 0.08s ease-in-out;
+}
+
+.schedule tr:hover {
+    background-color: #eee;
+}
+
+.schedule button {
+    border: none;
+    padding: 5px 15px;
+    margin-right: 5px;
+    background-color: #ddd;
+    transition: all 0.08s ease-in-out;   
+}
+
+.schedule button:hover {
+    background-color: #bbb;
+}

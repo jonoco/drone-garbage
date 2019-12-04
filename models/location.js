@@ -7,6 +7,14 @@ module.exports = sequelize.define('location', {
     allowNull: true,
     defaultValue: 'No description.'
   },
+  dateScheduled: {
+      type: DataTypes.DATE,
+      allowNull: true
+  },
+  team: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+  },
   long: {
     type: DataTypes.DOUBLE,
     allowNull: false

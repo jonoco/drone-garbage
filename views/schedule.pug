@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    div.schedule
+        <table style="width:100%">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Location</th>
+                    <th>Date Scheduled</th> 
+                    <th>Priority</th>
+                    <th>Team</th>
+                    <th>Controls</th>
+                </tr>
+            </thead>
+            <tbody>
+                each row, i in locations
+                    - var date = new Date(row['dateScheduled'])
+                    tr
+                        td= i+1
+                        td= row['description']
+                        td= date.getMonth()+1 + '/' + date.getDate()
+                        td= row['priority']
+                        td= row['team']
+                        td
+                            button edit
+                            button details
+        </table>
