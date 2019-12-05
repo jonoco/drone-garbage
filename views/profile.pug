@@ -4,23 +4,20 @@ block content
   div.profile
     h1= title
     p Welcome to #{title}
-    <div class="imgcontainer">
-        <img src="/photos/EmptyProfile.png">
-        <form action=#{form} method="post">
-        <p>Change Profile Picture</p>
-            <input type="file" name="picUpload" value="picUpload" id="picUpload">
-            <input type="submit" value="submitPhoto" name="btn">
-        </form>
-    </div>
-    
-    <br>
+    div.imgcontainer
+        if user['image']
+            img(src='data:image/jpeg;base64,' + user['image'].toString('base64'))
+        else
+            img(src='/photos/EmptyProfile.png')
 
-    <div class="Bio">
-        if user
-        <p>Name: #{user.firstName} #{user.lastName}</p>
-        <p>Bio:</p>
-        <form action=#{form} method="post">
-            <textarea name="userBio">#{user.bio}</textarea>
-            <input type="submit" value="submitBio" name="btn">
-        </form>
-    </div>
+        form(action=imageForm method='post' enctype='multipart/form-data')
+            p Change Profile Picture
+            input(type='file' name='image' accept='image/jpeg')
+            button(type='submit') update picture
+    br
+    div.Bio    
+        p Name: #{user.firstName} #{user.lastName}
+        p Bio:
+        form(action=bioForm method='post')
+            textarea(name='userBio') #{user.bio}
+            button(type='submit') update bio

@@ -33,5 +33,8 @@ module.exports = sequelize.define('user', {
       type: DataTypes.STRING,
       allowNull: false,
       defaultValue: 'Corvallis'
+  },
+  image: {
+    type: DataTypes.BLOB
   }
 })

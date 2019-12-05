@@ -10,13 +10,16 @@ router.get('/', function(req, res, next)
         User.findOne({ where: { username: req.session.user.username }})
             .then(function(user) {
                 if (!user) {
-                    res.status(404)
-                    res.send('No user found')
-                    return
+                    return res.status(404).send('No user found')
                 }
                 
                 req.session.user = user
-                res.render('profile', { title: 'Profile', form: `/profile/${user.username}`, user: user})
+                res.render('profile', { 
+                    title: 'Profile', 
+                    bioForm: `/profile/bio/${user.username}`, 
+                    imageForm: `/profile/image/${user.username}`, 
+                    user: user
+                })
             })
     } 
     else
@@ -25,39 +28,43 @@ router.get('/', function(req, res, next)
     }
 })
 
-router.post('/:user', function(req, res, next) 
-{
+router.post('/bio/:user', function(req, res, next) {
     const username = req.params.user
     if (username) 
     {
-        console.log('user logged in')
-        if(req.body.btn == 'submitPhoto') 
-        {
-            res.redirect('/profile')
-        }
-        else if(req.body.btn == 'submitBio')
-        {
-            //Update the users Bio to match what the user has typed into the userBio textbox
-            User.findOne({where: { username }})
-                .then(function(user) {
-                    user.bio = req.body.userBio
-                    user.save().then(function() {
-                        res.redirect('/profile')      
-                    }) 
-                })
-        }
-        else
-        {
-            res.status(404)
-            res.send('Bad request')
-        }  
-    } 
-    else {
-        res.status(404)
-        res.send('Bad request')
+        //Update the users Bio to match what the user has typed into the userBio textbox
+        User.findOne({ where: { username }})
+            .then(function(user) {
+                user.bio = req.body.userBio
+                user.save().then(function() {
+                    res.redirect('/profile')      
+                }) 
+            })
+        } 
+    else 
+    {
+        res.status(404).send('Username not found')
     }
 })
 
+router.post('/image/:user', function(req, res, next) {
+    const username = req.params.user
+    if (username) 
+    {    
+        if (!req.files)
+            return res.status(400).send('Bad request')
 
+        User.findOne({ where: { username }})
+            .then(function(user) {
+                user.image = req.files.image.data
+                user.save().then(function() {
+                    res.redirect('/profile')      
+                }) 
+            })  
+    } 
+    else {
+        res.status(404).send('Username not found')
+    }
+})
 
 module.exports = router;

@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session')
+const fileUpload = require('express-fileupload')
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -21,6 +22,11 @@ require('./models/associations')
 sequelize.sync() 
 
 const app = express();
+
+// enable files upload
+app.use(fileUpload({
+    createParentPath: true
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

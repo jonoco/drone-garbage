@@ -1,4 +1,5 @@
 const request = require('supertest')
+const fs = require('fs')
 const app = require('../app')
 
 describe('testing profile page', function() {
@@ -38,7 +39,7 @@ describe('testing profile page', function() {
             .expect(302)
 
         request(server)
-            .post('/profile/test')
+            .post('/profile/bio/test')
             .send({ btn: 'submitBio', userBio: 'some bio' })
             .expect(302, done)
             
@@ -49,10 +50,12 @@ describe('testing profile page', function() {
             .post('/login')
             .send({username: 'test', password: 'test'})
             .expect(302)
-
+    
         request(server)
-            .post('/profile/test')
-            .send({ btn: 'submitPhoto'})
+            .post('/profile/image/test')
+            .field('field', 'somefield')
+            .attach('image', __dirname + '/../public/images/profile.jpg')
             .expect(302, done)
+    
     })
 })

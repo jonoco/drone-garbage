@@ -5,3 +5,8 @@
 .profile img {
     width: 200px;
 }
+
+.profile textarea {
+  width: 100%;
+  height: 50px;
+}
